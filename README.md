@@ -10,8 +10,8 @@ The core question this runtime answers is:
 > zones constrain that answer, what derating state follows, and which placement
 > constraints must be surfaced without taking over placement authority?
 
-Thermal Zone Manager is released as **1.0.0** and is built from the DCCP
-program's shared conventions: strongly typed identities and generations, exact
+Thermal Zone Manager is released as **1.0.0** and is built from shared
+conventions: strongly typed identities and generations, exact
 integer physical units, a bounded dependency-light C++20 library, and refusals
 that are machine-readable rather than textual.
 
