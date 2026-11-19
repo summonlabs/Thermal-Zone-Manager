@@ -84,7 +84,9 @@ if(TZM_SANITIZERS)
         "installed. Reconfigure with -DTZM_SANITIZERS=OFF.")
     endif()
     set(TZM_SANITIZER_COMPILE_OPTIONS /fsanitize=address /Zi)
-    set(TZM_SANITIZER_LINK_OPTIONS /fsanitize=address)
+    # The linker does not know /fsanitize=address (LNK4044); /DEBUG keeps the
+    # debug information of the sanitizer objects (LNK4302 without it).
+    set(TZM_SANITIZER_LINK_OPTIONS /INCREMENTAL:NO /DEBUG)
     message(STATUS "ThermalZoneManager: AddressSanitizer enabled (MSVC)")
   elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     check_cxx_compiler_flag("-fsanitize=address,undefined" TZM_COMPILER_HAS_ASAN_UBSAN)
